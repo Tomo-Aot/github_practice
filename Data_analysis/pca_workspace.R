@@ -75,35 +75,42 @@ result |>
   scale_colour_viridis_d(end = 0.8)
 
 # 図を保存します。
+# 80㎜＊80mmがベストですが、種名やベクトルがはみ出すので少し大きくして保存
 pdfname = "./image/iris_pca_ggbiplot.pdf"
 pngname = str_replace(pdfname, pattern = "pdf", replacement = "png")
-ggsave(filename = pdfname, height = height, width = width, units = "mm")
+
+ggsave(filename = pdfname, height = height * 1.25, 
+       width = width * 1.25, units = "mm")
+
 image_read_pdf(pdfname, density = 300) |> 
   image_write(pngname)
 
+# いろいろ試してみましたが、ベクトルの形が気に入らないので、
+# geom_segment()で作ります。
+# ggbiplot()の場合はこの辺りがすこし不便です。
+
 
 # ggplot()で作図します
-# 主成分分析の結果から、PC1とPC2で99.9％説明している
 pc = result$x |> 
   as_tibble() |> 
   mutate(Species = df$Species)
 
-vector = result$rotation
-
-result$scale
-
+# 類似性のプロット
+# まだベクトルはつけていません
 pc |> 
   ggplot() + 
   geom_point(
     aes(x = PC1, y = PC2, colour = Species)
   ) + 
-  geom_segment(
-    aes(x = 0, y = 0, xend = PC1 * result$scale, yend = PC2 * result$scale),
-  ) + 
   scale_colour_viridis_d(end = 0.8)
 
+# 図を保存します
+pdfname = "./image/iris_pca.pdf"
+pngname = str_replace(pdfname, pattern = "pdf", replacement = "png")
 
+ggsave(filename = pdfname, height = height, 
+       width = width, units = "mm")
 
-
-
+image_read_pdf(pdfname, density = 300) |> 
+  image_write(pngname)
 
