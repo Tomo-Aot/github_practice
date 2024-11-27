@@ -187,6 +187,10 @@ per =
 xlab = str_c("PC1 (", floor(per[1, 1]), "%)")
 ylab = str_c("PC2 (", floor(per[2, 1]), "%)")
 
+# デフォルトだと矢印が小さくて見づらいので、
+# 2.5 倍にします
+scale_rot = 2.5
+
 pc |> 
   ggplot() + 
   geom_point(
@@ -194,10 +198,10 @@ pc |>
   ) + 
   geom_segment(
     aes(x = 0, y = 0,
-        xend = PC1, yend = PC2),
+        xend = PC1 * scale_rot, yend = PC2 * scale_rot),
     data = rot,
     arrow = arrow(type = "open", length = unit(1, "mm"), angle = 20),
-    size = 0.2
+    size = 0.5
   ) + 
   scale_x_continuous(
     name = xlab,
