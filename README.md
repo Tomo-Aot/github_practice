@@ -1,10 +1,9 @@
 # Github Workspace
-In this workspace, I will left R script for multi-variable analysis.
+このリポジトリにデータ解析のスクリプトと実際に用いたデータを保管します。
+ここでは、オープンソースのデータを使った解析を紹介します。
 
 ## Data_analysis
 このフォルダには、多変量解析のスクリプトファイルをアップロードしています。
-
-相関行列をPCAに用いる場合もありますが、このフォルダでは使いません。
 
 ### Principal Component Analysis (PCA)
 
