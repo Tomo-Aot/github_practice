@@ -1,3 +1,8 @@
+---
+Date: today
+---
+
+
 # Github Workspace
 
 このリポジトリにデータ解析のスクリプトと実際に用いたデータを保管します。
@@ -14,8 +19,8 @@ OS などシステムに関する情報はコマンドプロンプトから確�
 R と RStudio のダウンロードは以下のサイトから実行します。
 
 [RCRAN](https://cran.rstudio.com/)
-[RStudio Desktop Posit](https://posit.co/download/rstudio-desktop/)
 
+[RStudio Desktop Posit](https://posit.co/download/rstudio-desktop/)
 
 ## Data_analysis
 
@@ -25,12 +30,12 @@ R と RStudio のダウンロードは以下のサイトから実行します。
 
 ### Redundancy Analysis (RDA)
 
-RDAは制約付き序列化解析です。つまり、条件付きのPCAです。
+RDA は制約付き序列化解析です。つまり、条件付きの PCA です。
 多変量解析の際は、データの標準化を行うことが一般的です。
 種数のデータには一般的にへリンガー変換 (Hellinger Transformation) が用いられます。
 そのため、ここではへリンガー変換します。
 
-RDAは、群集生態学で用いられる解析手法であり、
+RDA は、群集生態学で用いられる解析手法であり、
 環境要因の行列データを説明変数として、
 生物群集の行列データを説明します。
 
