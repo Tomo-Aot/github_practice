@@ -6,26 +6,7 @@ title: |
        |
 date: today
 author: Aota Tomoyuki
-institute: Institute for East China Sea Research # 所属等を書きます(無くてもOK)
-format: 
-  html:
-    mainfont: "Noto Serif" # フォントの設定
-    sansfont: "Noto Sans" # フォントの設定
-    CJKmainfont: "Noto Serif CJK JP" # フォントの設定
-    CJKsansfont: "Noto Sans CJK JP" # フォントの設定
-    fontsize: 11pt # フォントのサイズ
-    fig-width: 16
-    fig-height: 9
-    toc: true
-    toc_depth: 1
-execute: 
-  echo: false
-  warning: false
-  messages: false
-  freeze: true
-editor: 
-  markdown: 
-    wrap: 72
+institute: Institute for East China Sea Research
 ---
 
 # Github Workspace
