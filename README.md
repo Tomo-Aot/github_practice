@@ -1,9 +1,5 @@
 ---
-title: |
-       | Github Workspace
-       |
-       |
-       |
+title: Github Workspace
 date: today
 author: Aota Tomoyuki
 institute: Institute for East China Sea Research
