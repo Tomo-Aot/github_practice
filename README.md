@@ -1,10 +1,3 @@
----
-title: Github Workspace
-date: today
-author: Aota Tomoyuki
-institute: Institute for East China Sea Research
----
-
 # Github Workspace
 
 このリポジトリにデータ解析のスクリプトと実際に用いたデータを保管します。
