@@ -105,3 +105,5 @@ pc |>
   ) + 
   scale_colour_viridis_d(end = 0.8)
 ```
+
+![Iris の主成分分析](./image/iris_pca_final.png)
