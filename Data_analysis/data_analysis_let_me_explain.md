@@ -2,7 +2,7 @@
 
 ## Principal Component Analysis (PCA)
 
-```{r}
+```
 # パッケージの読み込み
 library(tidyverse) # 作図用
 library(stats) # 主成分分析用
