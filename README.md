@@ -51,7 +51,7 @@ sudo apt install r-cran-lavaan
 しかし、このコマンドでも showtext パッケージはインストールできなかったので、
 別の方法が思いつき次第、追記していこうと思います。
 
-## Data_analysis
+## Data Analysis
 
 このフォルダには、多変量解析のスクリプトファイルをアップロードしています。
 
