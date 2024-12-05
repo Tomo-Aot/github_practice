@@ -55,6 +55,12 @@ sudo apt install r-cran-lavaan
 
 このフォルダには、多変量解析のスクリプトファイルをアップロードしています。
 
+### 一般化線形モデル (Generalized Linear Model)
+
+一つの変数を説明する際に、最も用いられるモデルに一般化線形モデルなどがあげられる。
+ここでは、Irisのデータに一般化線形モデルを当てはめて説明することを試みる。
+今回は、正規分布とガンマ分布を仮定した一般化線形モデルを作成する。
+
 ### Principal Component Analysis (PCA)
 
 ### Redundancy Analysis (RDA)
