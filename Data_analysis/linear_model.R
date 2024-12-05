@@ -1,13 +1,16 @@
-
+# 2024-12-05
+# toomoyuki aota
+# packages
 library(tidyverse)
 library(stats)
 library(patchwork)
 library(ggpubr)
 library(showtext)
 library(magick)
+library(sysfonts)
 
 # フォントの埋め込み
-font_add_google(name = "Noto Sans", family = "ns")
+font_add_google(name = "Noto Sans JP", family = "ns")
 theme_pubr(base_size = 10, base_family = "ns") |> 
   theme_set()
 showtext_auto()
@@ -30,7 +33,7 @@ model2 = glm(formula = Petal.Length ~ Petal.Width,
 y = function(model, x){
   intercept = model$coefficient[1] # y切片
   coefficient = model$coefficients[2] # 係数
-  return(x * coefficient + intercept) # 出力地
+  return(x * coefficient + intercept) # 出力値
 }
 
 # Petal.LengthとPetal.Widthでモデルを作成します
@@ -53,6 +56,20 @@ m3 = glm(formula = PW ~ PL + Species, data = df, family = Gamma("log"))
 
 # 赤池情報量規準(AIC)の計算
 AIC(m0, m1, m2, m3)
+
+# モデルの診断図
+plot(m0, which = 1)
+plot(m1, which = 1)
+plot(m2, which = 1)
+plot(m3, which = 1)
+
+# 診断図の結果は、帰無モデルはこのデータを説明しない
+# そのため、説明変数に、花弁の長さを入れたほうが良い
+# 種の相互作用を加えたモデルの場合、
+# m1とm3の診断図では、m1で等分散性が示されたが、
+# m3では、示されなかった。
+# このデータの場合、正規分布を仮定した一般化線形モデルが
+# 最も説明した。
 
 # 正規分布
 pdata = df |> 
@@ -126,16 +143,15 @@ p2 = df |>
   scale_fill_viridis_d(end = 0.8) + 
   scale_colour_viridis_d(end = 0.8)
 
-
 p1 + p2 + plot_layout(nrow = 1)
 
-pdfname = "./image/Generalized_linear_model.pdf"
-pngname = str_replace(pdfname, pattern = "pdf", replacement = "png")
-
-ggsave(filename = pdfname, height = height, 
-       width = width * 2, units = "mm")
-
-image_read_pdf(pdfname, density = 600) |> 
-  image_write(pngname)
-
+# save image
+# pdfname = "./image/Generalized_linear_model.pdf"
+# pngname = str_replace(pdfname, pattern = "pdf", replacement = "png")
+# 
+# ggsave(filename = pdfname, height = height, 
+#        width = width * 2, units = "mm")
+# 
+# image_read_pdf(pdfname, density = 600) |> 
+#   image_write(pngname)
 
