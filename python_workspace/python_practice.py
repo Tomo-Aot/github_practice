@@ -6,7 +6,7 @@
 import pandas as pd
 from pathlib import Path
 
-file = "C:/Users/private/OneDrive - Nagasaki University/ドキュメント/Data_analysis/data/city_weather.csv"
+file = "city_weather.csv"
 
 # pandas パッケージのread_csv()を使って読み込みます
 df = pd.read_csv(file)
