@@ -80,14 +80,14 @@ result |>
 # 図を保存します。
 # 80㎜＊80mmがベストですが、種名やベクトルがはみ出すので少し大きくして保存
 # 図を保存する際は、一度pdfにしてからpngに変換すると調節しやすいです
-pdfname = "./image/iris_pca_ggbiplot.pdf"
-pngname = str_replace(pdfname, pattern = "pdf", replacement = "png")
-
-ggsave(filename = pdfname, height = height * 1.25, 
-       width = width * 1.25, units = "mm")
-
-image_read_pdf(pdfname, density = 300) |> 
-  image_write(pngname)
+# pdfname = "./image/iris_pca_ggbiplot.pdf"
+# pngname = str_replace(pdfname, pattern = "pdf", replacement = "png")
+# 
+# ggsave(filename = pdfname, height = height * 1.25, 
+#        width = width * 1.25, units = "mm")
+# 
+# image_read_pdf(pdfname, density = 300) |> 
+#   image_write(pngname)
 
 # いろいろ試してみましたが、ベクトルの形が気に入らないので、
 # geom_segment()で作ります。
@@ -128,14 +128,14 @@ plot = pc |>
 print(plot)
 
 # 図を保存します
-pdfname = "./image/iris_pca.pdf"
-pngname = str_replace(pdfname, pattern = "pdf", replacement = "png")
-
-ggsave(filename = pdfname, height = height, 
-       width = width, units = "mm")
-
-image_read_pdf(pdfname, density = 300) |> 
-  image_write(pngname)
+# pdfname = "./image/iris_pca.pdf"
+# pngname = str_replace(pdfname, pattern = "pdf", replacement = "png")
+# 
+# ggsave(filename = pdfname, height = height, 
+#        width = width, units = "mm")
+# 
+# image_read_pdf(pdfname, density = 300) |> 
+#   image_write(pngname)
 
 # 矢印を追加します
 # 矢印の大きさは主成分分析のRotationの係数で決まります
@@ -151,17 +151,28 @@ plot2 = plot +
 
 plot2
 
-pdfname = "./image/iris_pca_arw.pdf"
-pngname = str_replace(pdfname, pattern = "pdf", replacement = "png")
-
-ggsave(filename = pdfname, height = height, 
-       width = width, units = "mm")
-
-image_read_pdf(pdfname, density = 600) |> 
-  image_write(pngname)
+# pdfname = "./image/iris_pca_arw.pdf"
+# pngname = str_replace(pdfname, pattern = "pdf", replacement = "png")
+# 
+# ggsave(filename = pdfname, height = height, 
+#        width = width, units = "mm")
+# 
+# image_read_pdf(pdfname, density = 600) |> 
+#   image_write(pngname)
 
 # 各主成分の寄与率を計算して、図の軸に表示します
 # 寄与率の確認方法がわからないので、計算します
+
+
+# 分散共分散行列の場合、RDAの固有値問題を解くことになります。
+# RDAは、制限付きの序列化PCAです。
+# ここでは、Irisの序列化データも確認してみます。
+result2 = vegan::rda(mat)
+
+result
+# これがIris行列の固有値です。
+eigenvalue = result2$CA$eig
+
 ctb = function(x){
   sdev = x
   
@@ -183,9 +194,9 @@ per =
   mutate(PC = colnames(result$x))
 
 # 最終的な図は次のようになる
-# 今回は寄与率の整数部分だけ表示します
-xlab = str_c("PC1 (", floor(per[1, 1]), "%)")
-ylab = str_c("PC2 (", floor(per[2, 1]), "%)")
+# 今回は寄与率の小数第2位まで表示します
+xlab = str_c("PC1 (", round(per[1, 1], 2), "%)")
+ylab = str_c("PC2 (", round(per[2, 1], 2), "%)")
 
 # デフォルトだと矢印が小さくて見づらいので、
 # 2.5 倍にします
@@ -218,7 +229,9 @@ pc |>
     legend.justification = c(1, 1),
     legend.background = element_blank(),
     legend.direction = "vertical",
-    panel.border = element_rect(size = 1, fill = NA)
+    panel.border = element_rect(size = 1, fill = NA),
+    # 軸の目盛りはデフォルトで濃い灰色なので黒にします。
+    axis.ticks = element_line(colour = "black")
   ) + 
   scale_colour_viridis_d(end = 0.8)
 
@@ -226,9 +239,9 @@ pc |>
 pdfname = "./image/iris_pca_final.pdf"
 pngname = str_replace(pdfname, pattern = "pdf", replacement = "png")
 
-ggsave(filename = pdfname, height = height, 
+ggsave(filename = pdfname, height = height,
        width = width, units = "mm")
 
-image_read_pdf(pdfname, density = 600) |> 
+image_read_pdf(pdfname, density = 600) |>
   image_write(pngname)
 
