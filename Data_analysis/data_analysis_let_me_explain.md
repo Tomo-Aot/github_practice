@@ -22,7 +22,7 @@ library(magick) # 図の保存用
 日本語で作図する際は Noto Sans JP がおすすめです。
 font_add_google() で Google のフォントをSysfonts に追加します。
 この関数を使う際は、インターネットに接続してください。
-他のフォントは (Google Font)[https://fonts.google.com/]
+他のフォントは (https://fonts.google.com/)[Google Font]
 から確認することができます。
 
 ```
