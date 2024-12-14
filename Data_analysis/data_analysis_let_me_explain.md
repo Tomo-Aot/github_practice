@@ -1,6 +1,9 @@
 # Data analysis Workspace
 
-## Principal Component Analysis (PCA)
+解析を始める前に、パッケージの読み込みとフォントの設定を行います。
+ここでの設定は、実際に研究室で使っている方法と同じです。
+$showtext$ パッケージはOSによってインストールがうまく行かない場合があるので、
+その場合は、関数を自作します。
 
 ```
 # パッケージの読み込み
@@ -10,13 +13,33 @@ library(vegan) # 非類似度の解析に使います
 library(ggpubr) # 作図用
 library(showtext) # フォント用
 library(magick) # 図の保存用
+```
 
+読み込めなかったパッケージは適宜インストールしてください。
+
+次に、フォントの設定を行います。
+ここでは、Noto Sansを使います。
+日本語で作図する際は Noto Sans JP がおすすめです。
+font_add_google() で Google のフォントをSysfonts に追加します。
+この関数を使う際は、インターネットに接続してください。
+他のフォントは (Google Font)[https://fonts.google.com/]
+から確認することができます。
+
+```
 # フォントはGoogleのNoto Sans、フォントサイズは10ptに設定します
 font_add_google(name = "Noto Sans", family = "ns")
 theme_pubr(base_family = "ns", base_size = 10) |> 
   theme_set()
 showtext_auto()
+```
 
+
+
+
+## Principal Component Analysis (PCA)
+
+
+```
 # 保存する図のサイズを指定します
 # 80mm * 80mmにしておくと論文に掲載する際に便利です
 height = 80
