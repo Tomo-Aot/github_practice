@@ -23,7 +23,7 @@ library(magick) # 図の保存用
 font_add_google() で Google のフォントをSysfonts に追加します。
 この関数を使う際は、インターネットに接続してください。
 他のフォントは
-(Google Fonts)[https://fonts.google.com/]
+https://fonts.google.com/
 から確認することができます。
 
 ```
