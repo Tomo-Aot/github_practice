@@ -22,8 +22,7 @@ library(magick) # 図の保存用
 日本語で作図する際は Noto Sans JP がおすすめです。
 font_add_google() で Google のフォントをSysfonts に追加します。
 この関数を使う際は、インターネットに接続してください。
-他のフォントは
-https://fonts.google.com/
+他のフォントは[Google Fonts](https://fonts.google.com/)
 から確認することができます。
 インターネットに接続することが難しい場合は、
 システムのフォントから使えそうなものを選びます。
@@ -65,7 +64,7 @@ print(df)
 ```
 
 読み込んだデータは、行列データに変換します。
-この過程は[pca_workspace.R]()
+この過程は[pca_workspace.R](https://github.com/Tomo-Aot/github_practice/blob/main/Data_analysis/pca_workspace.R)
 
 ```
 # 行列にする際に、データを標準化します
