@@ -1,7 +1,7 @@
 # 2024-12-10
 # very simple application in ubuntu
 # how to install tkinter in ubuntu24.04LTS
-# open terminal and put the following command
+# open terminal and do the following command
 # sudo apt-get install python3-tk
 import tkinter as tk
 
