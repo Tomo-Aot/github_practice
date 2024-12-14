@@ -61,10 +61,11 @@ width = height
 
 ```
 df = iris |> as_tibble()
-
 print(df)
 ```
 
+読み込んだデータは、行列データに変換します。
+この過程は[pca_workspace.R]()
 
 ```
 # 行列にする際に、データを標準化します
