@@ -65,26 +65,46 @@ print(df)
 
 読み込んだデータは、行列データに変換します。
 この過程は[pca_workspace.R](https://github.com/Tomo-Aot/github_practice/blob/main/Data_analysis/pca_workspace.R)
+を参照してください。
+行列データに変換する際は、データを標準化します。
+ここでは、scale()を使って標準化していますが、
+生態学で標準化する際は少数のデータや0への重み付けが小さいHellinger変換を使うことが一般的です。
+標準化する際は、それぞれのデータに適した距離を使います。
 
 ```
 # 行列にする際に、データを標準化します
 mat = scale(df[,c(1:4)], center = TRUE, scale = TRUE)
+```
 
-# 主成分分析の結果
+行列データをprcomp()に入れて主成分分析します。
+veganパッケージのrda()でも主成分分析することができますが、ここでは使いません。
+
+```
 result = prcomp(mat)
+print(result)
+```
 
-# 要約統計量の確認
-summary(result)
+この結果から作図に使う要素を引数に入れていきます。
+ggbiplotパッケージのggbiplotでデフォルトで矢印を付けてくれますが、
+私はこの関数が好きではないので自作します。
+個人的な話ですが、この関数の矢印は少し太すぎるので、図を保存する際に難儀しました。
 
-# 主成分をtibbleにして元のデータの種名を加えます
+種名を追加します。
+
+```
 pc = result$x |> 
   as_tibble() |> 
   mutate(Species = df$Species)
+```
 
-# 矢印を追加します
-# 矢印の大きさは主成分分析のRotationの係数で決まります
+主成分を引数に入れる。
+矢印の長さは結果のrotationです。
+
+```
 rot = result$rotation
+```
 
+```
 # 各主成分の寄与率を計算して、図の軸に表示します
 # 寄与率の確認方法がわからないので、計算します
 ctb = function(x){
