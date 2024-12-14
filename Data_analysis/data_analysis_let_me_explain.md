@@ -1,3 +1,12 @@
+<head>
+  <style>
+    img {
+      width: 300px;
+      height: 200px;
+    }
+  </style>
+</head>
+
 # Data analysis Workspace
 
 解析を始める前に、パッケージの読み込みとフォントの設定を行います。
