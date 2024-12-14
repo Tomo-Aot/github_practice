@@ -25,6 +25,10 @@ font_add_google() で Google のフォントをSysfonts に追加します。
 他のフォントは
 https://fonts.google.com/
 から確認することができます。
+インターネットに接続することが難しい場合は、
+システムのフォントから使えそうなものを選びます。
+この場合、font_add() を使って編集することができます。
+showtext_auto() を実行すると、これ以降に作られた図にこの設定が適用されます。
 
 ```
 # フォントはGoogleのNoto Sans、フォントサイズは10ptに設定します
@@ -34,17 +38,20 @@ theme_pubr(base_family = "ns", base_size = 10) |>
 showtext_auto()
 ```
 
-
-
-
-## Principal Component Analysis (PCA)
-
+作図する場合は、図のサイズを引数に入れておくと便利です。
+研究室では、地図の色なども同じように引数に入れて作成しています。
 
 ```
 # 保存する図のサイズを指定します
 # 80mm * 80mmにしておくと論文に掲載する際に便利です
 height = 80
 width = height
+```
+
+## Principal Component Analysis (PCA)
+
+
+```
 
 # そのままだと、それぞれの変数の形式がわからないので、tibbleにします
 df = iris |> as_tibble()
