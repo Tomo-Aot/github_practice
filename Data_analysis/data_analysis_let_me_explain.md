@@ -55,10 +55,18 @@ width = height
 
 ## Principal Component Analysis (PCA)
 
+主成分分析(PCA)は、多変量のデータセットから相関のある変数を主成分(PC)として計算する教師なし機械学習です。
+ここでは、Rに標準搭載されているアヤメのデータセットを用いて主成分分析します。
+読み込んだデータは、そのままだとそれぞれの変数の形式がわからないので、tibbleにします
+
 ```
-# そのままだと、それぞれの変数の形式がわからないので、tibbleにします
 df = iris |> as_tibble()
 
+print(df)
+```
+
+
+```
 # 行列にする際に、データを標準化します
 mat = scale(df[,c(1:4)], center = TRUE, scale = TRUE)
 
