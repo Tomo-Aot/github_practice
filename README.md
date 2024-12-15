@@ -53,7 +53,7 @@ sudo apt install r-cran-lavaan
 
 ## Data Analysis
 
-このフォルダには、多変量解析のスクリプトファイルをアップロードしています。
+このフォルダには、普段使用するスクリプトを共有します。
 
 ### 一般化線形モデル (Generalized Linear Model)
 
