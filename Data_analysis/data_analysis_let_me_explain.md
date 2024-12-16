@@ -119,4 +119,4 @@ ctb = function(x){
 
 作図の結果は下の図のようになります。
 
-![Iris の主成分分析のバイプロット](./image/iris_pca_final.png)
+![Fig. 1. Iris の主成分分析のバイプロット](./image/iris_pca_final.png)
