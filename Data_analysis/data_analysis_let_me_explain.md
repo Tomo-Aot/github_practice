@@ -115,7 +115,6 @@ ctb = function(x){
   contribution = variance / total_variance * 100
   return(contribution)
 }
-
 ```
 
 作図の結果は下の図のようになります。
