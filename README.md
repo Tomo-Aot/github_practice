@@ -29,7 +29,7 @@ install.packages("package_name")
 ```
 
 Windows 11 では今のところこの関数でインストールできないパッケージを確認していませんが、
-Debian系のUbuntu 24.04LTS ではいくつかのパッケージがこの関数でインストールすることができません。
+Debian 系 Linux の Ubuntu 24.04LTS ではいくつかのパッケージがこの関数でインストールすることができません。
 
 Ubuntu 24.04LTS に R
 をインストールして解析する際、パッケージのインストールを Terminal
