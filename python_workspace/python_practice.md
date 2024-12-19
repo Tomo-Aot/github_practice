@@ -5,6 +5,13 @@
 最終的な目標は、 Python で一般化線形モデルを作成して、作図することです。
 また、 web アプリの開発も挑戦してみたいので、その内容も共有していきます。
 
+### 開発環境
+OS ... Ubuntu 24.04 LTS
+
+Version ... 3.13
+
+Editor ... Visual Studio Code
+
 ## Python_practice.py
 
 
