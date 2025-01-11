@@ -136,19 +136,42 @@ triangle(n = 7) |>
 
 # 任意の三角形を作る関数を作成します。
 tr_ang = function(a, b, deg_c, fill){
-  # 二篇の長さをa, bとします。
-  # 二篇の鋏角をangleとします。
+  # 下の図のような三角形を作図します。
+  # 二辺の長さをa, bとします。
+  # 二辺の鋏角をangleとします。
+  # 　　　 　     (x3, y3)
+  # 　　　 　     /\
+  # 　　　 　    /  \
+  # 　　　 　   /    \
+  # 　　　 　b /      \ 
+  # 　　　 　 /        \
+  # 　　　 　/ angle    \
+  # (x1, y1)/____________\(x2, y2)
+  # 　　　　       a
+  
+  # 1点目は原点を基準にします。
   x1 = 0
   y1 = 0
+  
+  # 2つ目の点は1点目と直線で結んで底辺を作成するため、
+  # (a, 0)とします。
   x2 = a
   y2 = 0
   
   # 度数法で入力するのが分かりやすいと思うので、
   # 入力値を度で表して、出力の際に弧度法に直します。
+  # 図形を作る際は、弧度法を使うと便利な気がします。
+  # 180度のとき、弧度法ではπになります。
+  # そのため、pi/180に度数法の時の角度を掛けることで、
+  # 度数法から弧度法に置換することができます。
   angle = deg_c * pi / 180
   
-  x3 = b / a * cos(angle)
-  y3 = b / a * sin(angle)
+  # 最後の点は底辺を基準にangle分回転させることを考えます。
+  # このとき、線分の長さを辺bと等しくするため、ｂを掛けます。
+  x3 = b * cos(angle)
+  y3 = b * sin(angle)
+  
+  # 3点の座標をデータフレームにまとめる
   df = tibble(
     x = c(x1, x2, x3),
     y = c(y1, y2, y3)
@@ -202,19 +225,20 @@ tr_ang = function(a, b, deg_c, fill){
 
 
 tr_ang(
-  a = 3,
-  b = 4,
-  deg_c = 60,
-  fill = "turquoise"
+  a = 2,
+  b = sqrt(3),
+  deg_c = 30,
+  fill = "black"
 )
 
+# save image
+height = 80
+width = height
+pdfname = "./image/triangle.pdf"
+pngname = str_replace(pdfname, "pdf", "png")
 
-#       (x3, y3)
-#       /\
-#      /  \
-#     /    \
-#  b /      \ 
-#   /        \
-#  / angle    \
-# /____________\(x2, y2)
-#        a
+ggsave(pdfname, height = height, width = width,
+       units = "mm")
+image_read_pdf(pdfname, density = 300) %>%
+  image_write(pngname)
+
