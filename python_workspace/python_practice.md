@@ -12,5 +12,16 @@ Version ... 3.13
 
 Text Editor ... Visual Studio Code
 
-## 
+## パッケージ
+
+データの読み込み、可視化、解析に必要なパッケージを読み込みます。
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from scipy import stats
+from statsmodels.formula.api import ols
+from statsmodels.stats.anova import anova_lm
+```
 
