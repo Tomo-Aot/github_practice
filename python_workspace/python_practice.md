@@ -10,10 +10,7 @@ OS ... Ubuntu 24.04 LTS
 
 Version ... 3.13
 
-Editor ... Visual Studio Code
+Text Editor ... Visual Studio Code
 
-## Python_practice.py
-
-
-## web_app.py
+## 
 
