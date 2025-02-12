@@ -24,7 +24,8 @@ library(magick) # 図の保存用
 日本語で作図する際は Noto Sans JP がおすすめです。
 font_add_google() で Google のフォントをSysfonts に追加します。
 この関数を使う際は、インターネットに接続してください。
-他のフォントは[Google Fonts](https://fonts.google.com/)
+他のフォントは
+[Google Fonts](https://fonts.google.com/)
 から確認することができます。
 インターネットに接続することが難しい場合は、
 システムのフォントから使えそうなものを選びます。
@@ -50,9 +51,9 @@ height = 80
 width = height
 ```
 
-図を保存する際は一度pdfファイルに保存してからpngファイルに保存します。
-この方法は直接pngファイルに保存するよりもきれいに保存できます。
-また、pdfの方がエクスポートする際に安定することがあります。
+図を保存する際は一度pdfファイルに保存してから png ファイルに保存します。
+この方法は直接 png ファイルに保存するよりもきれいに保存できます。
+また、pdf の方がエクスポートする際に安定することがあります。
 
 ## Principal Component Analysis (PCA)
 
@@ -66,11 +67,12 @@ print(df)
 ```
 
 読み込んだデータは、行列データに変換します。
-この過程は[pca_workspace.R](https://github.com/Tomo-Aot/github_practice/blob/main/Data_analysis/pca_workspace.R)
+この過程は
+[pca_workspace.R](https://github.com/Tomo-Aot/github_practice/blob/main/Data_analysis/pca_workspace.R)
 を参照してください。
 行列データに変換する際は、データを標準化します。
-ここでは、scale()を使って標準化していますが、
-生態学で標準化する際は少数のデータや0への重み付けが小さいHellinger変換を使うことが一般的です。
+ここでは、scale() を使って標準化していますが、
+生態学で標準化する際は少数のデータや 0 への重み付けが小さい Hellinger 変換が一般的です。
 標準化する際は、それぞれのデータに適した距離を使います。
 
 ```
@@ -78,8 +80,8 @@ print(df)
 mat = scale(df[,c(1:4)], center = TRUE, scale = TRUE)
 ```
 
-行列データをprcomp()に入れて主成分分析します。
-veganパッケージのrda()でも主成分分析することができますが、ここでは使いません。
+行列データを prcomp() に入れて主成分分析します。
+vegan パッケージの rda() でも主成分分析することができますが、ここでは使いません。
 
 ```
 result = prcomp(mat)
@@ -87,7 +89,7 @@ print(result)
 ```
 
 この結果から作図に使う要素を引数に入れていきます。
-ggbiplotパッケージのggbiplotでデフォルトで矢印を付けてくれますが、
+ggbiplot パッケージの ggbiplot でデフォルトで矢印を付けてくれますが、
 私はこの関数が好きではないので自作します。
 個人的な話ですが、この関数の矢印は少し太すぎるので、図を保存する際に難儀しました。
 
@@ -100,7 +102,7 @@ pc = result$x |>
 ```
 
 主成分を引数に入れる。
-矢印の長さは結果のrotationです。
+矢印の長さは結果の rotation です。
 
 ```
 rot = result$rotation
